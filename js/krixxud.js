@@ -65,7 +65,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // 호버 효과
-const hoverElements = document.querySelectorAll('a, button, input, textarea');
+const hoverElements = document.querySelectorAll('.hero-text > h1');
 hoverElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
         cursorOutline.classList.add('cursor-hover');
