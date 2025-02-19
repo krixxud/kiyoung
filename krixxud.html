@@ -10,96 +10,83 @@
     <link rel="stylesheet" href="./css/krixxud.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="./js/krixxud.js" defer></script>
+
+    <style>
+        .hero-text h2 span,
+        .hero-text p {
+            opacity: 0;
+            transform: translateY(30px);
+            display: inline-block;
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <div class="loading-screen">
-    <span class="loading-logo">Krixxud</span>
+    <div class="wrapper">
+        <div class="loading-screen">
+            <span class="loading-logo">Krixxud</span>
+        </div>
+
+        <!-- 커스텀 커서 -->
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+
+        <video src="./image/heroBg.mp4" autoplay loop muted></video>
+
+        <main class="scroll-container">
+
+            <header>
+                <h1>
+                    <a href="#" class="logo">Krixxud</a>
+                </h1>
+
+            </header>
+
+
+            <section class="hero" id="about">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2><span class="greeting">"The spaces we create</span><br>
+                            <span class="introduceFirst">leave a mark with every touch,</span>
+                            <span class="introduceName">turning into lasting memories."</span>
+                        </h2>
+                        <p>빠르게 변화하는 트렌드의 기준이 될 놈입니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects" id="projects">
+                <div class="projects-grid"></div>
+                <div class="project-card morning_glory container">
+                    <img src="./image/morningglory.png" alt="Project 3">
+                    <div class="project-info">
+                        <h2>웹 사이트 리뉴얼 프로젝트 '모닝글로리'</h2>
+                        <p>UI/UX Design, Development</p>
+                    </div>
+                </div>
+
+                <div class="project-card live_on container">
+                    <img src="./image/live_on.png" alt="Project 4">
+                    <div class="project-info">
+                        <h2>프리미엄 부동산 중개 웹사이트 'live on'</h2>
+                        <p>UI/UX Design, Development</p>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <!-- 커스텀 커서 -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <nav class="nav-container">
+        <h2 class="hidden">주 네비게이션</h2>
+        <ul class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </ul>
+    </nav>
 
-    <header>
-        <h1>
-            <a href="#" class="logo">Krixxud</a>
-        </h1>   
-
-        <nav class="nav-container">
-            <h2 class="hidden">주 네비게이션</h2>
-            <ul class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </ul> 
-        </nav>
-
-        <button class="mobile-menu-btn">
-            <span class="bar"></span>
-        </button>
-
- 
-    </header>
-
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>안녕하세요,<br><span class="introduceFirst">UI/UX 디자이너</span>권기영입니다</h1>
-                <p>빠르게 변화하는 트렌드의 기준이 될 놈입니다.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="projects" id="projects">
-        <div class="projects-grid">
-            <div class="project-card branding">
-                <img src="./image/branding.png" alt="Project 1">
-                <div class="project-info">
-                    <h2>소아과 브랜드 '온유'</h2>
-                    <p>Design - Branding</p>
-                </div>
-            </div>
-            <div class="explan-project">
-                <h2>소아과 브랜드 '온유'</h2>
-                <p>내용</p>
-            </div>
-            <div class="project-card package">
-                <img src="./image/package.png" alt="Project 2">
-                <div class="project-info">
-                    <h3>캐모마일 현미녹차 '아차차'</h3>
-                    <p>Design - Package</p>
-                </div>
-            </div>
-            <div class="explan-project">
-                <h2>캐모마일 현미녹차 '아차차'</h2>
-                <p>내용</p>
-            </div>
-            <div class="project-card morning_glory">
-                <img src="./image/morningglory.png" alt="Project 3">
-                <div class="project-info">
-                    <h3>웹 사이트 리뉴얼 프로젝트 '모닝글로리'</h3>
-                    <p>UI/UX Design, Development</p>
-                </div>
-            </div>
-            <div class="explan-project">
-                <h2>웹 사이트 리뉴얼 프로젝트 '모닝글로리'</h2>
-                <p>내용</p>
-            </div>
-            <div class="project-card live_on">
-                <img src="./image/live_on.png" alt="Project 4">
-                <div class="project-info">
-                    <h3>프리미엄 부동산 중개 웹사이트 'live on'</h3>
-                    <p>UI/UX Design, Development</p>
-                </div>
-            </div>
-            <div class="explan-project">
-                <h2>프리미엄 부동산 중개 웹사이트 'live on'</h2>
-                <p>내용</p>
-            </div>
-        </div>
-    </section>
 </body>
 
 </html>

@@ -1,28 +1,12 @@
-// Header background change on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 50) {
-        header.style.background = '#000';
-    } else {
-        header.style.background = 'transparent';
-    }
-});
-
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
 // 로딩 애니메이션
 document.addEventListener('DOMContentLoaded', () => {
     const loadingScreen = document.querySelector('.loading-screen');
     const loadingLogo = document.querySelector('.loading-logo');
     const navLogo = document.querySelector('.logo');
+    const heroTitle = document.querySelector('.hero-text .greeting');
+    const heroIntroduce = document.querySelector('.hero-text .introduceFirst');
+    const heroLastName = document.querySelector('.hero-text .introduceName');
+    const heroDesc = document.querySelector('.hero-text p');
 
     // 페이지가 완전히 로드될 때까지 기다림
     window.addEventListener('load', () => {
@@ -34,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 loadingScreen.classList.add('fade-out');
                 navLogo.classList.add('show');
+                heroTitle.classList.add('animate');
+                heroIntroduce.classList.add('animate');
+                heroLastName.classList.add('animate');
+                heroDesc.classList.add('animate');
 
                 // 페이드 아웃 애니메이션이 완료된 후 요소 제거
                 setTimeout(() => {
@@ -42,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         }, 200);
     });
+
 });
 
 // 커서 동작 개선
@@ -65,7 +54,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // 호버 효과
-const hoverElements = document.querySelectorAll('.hero-text > h1');
+const hoverElements = document.querySelectorAll('.hero-text');
 hoverElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
         cursorOutline.classList.add('cursor-hover');
@@ -109,3 +98,77 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         navLinks.classList.remove('active');
     });
 });
+
+function initScrolling() {
+    const container = document.querySelector('.scroll-container');
+    const sections = document.querySelectorAll('section');
+    let currentSection = 0;
+    let isScrolling = false;
+    
+    console.log('Scroll init:', 'Container:', container, 'Sections:', sections);
+    
+    if (container && sections.length > 0) {
+        window.addEventListener('wheel', handleWheel);
+        
+        // 키보드 이벤트도 추가하여 접근성 향상
+        window.addEventListener('keydown', handleKeyDown);
+    } else {
+        console.error('Container or sections not found!');
+    }
+    
+    function handleWheel(e) {
+        e.preventDefault(); // 기본 스크롤 동작 방지
+        
+        if (isScrolling) return;
+        
+        if (e.deltaY > 0) {
+            // 아래로 스크롤
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                moveToSection(currentSection);
+            }
+        } else {
+            // 위로 스크롤
+            if (currentSection > 0) {
+                currentSection--;
+                moveToSection(currentSection);
+            }
+        }
+    }
+    
+    function handleKeyDown(e) {
+        if (isScrolling) return;
+        
+        if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+            e.preventDefault();
+            if (currentSection < sections.length - 1) {
+                currentSection++;
+                moveToSection(currentSection);
+            }
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+            e.preventDefault();
+            if (currentSection > 0) {
+                currentSection--;
+                moveToSection(currentSection);
+            }
+        }
+    }
+    
+    function moveToSection(index) {
+        isScrolling = true;
+        container.style.transform = `translateY(-${index * 100}vh)`;
+        
+        // 현재 활성 섹션에 클래스 추가
+        sections.forEach((section, i) => {
+            if (i === index) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
+        
+        setTimeout(() => {
+            isScrolling = false;
+        }, 800);
+    }
+}
