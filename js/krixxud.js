@@ -171,4 +171,4 @@ function initScrolling() {
             isScrolling = false;
         }, 800);
     }
-}
+}initScrolling();
